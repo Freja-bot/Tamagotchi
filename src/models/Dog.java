@@ -3,11 +3,11 @@ package models;
 import java.util.Random;
 
 public class Dog extends Tamagotchi{
-    private char backslash = (char) 92;
-    private String ears = "    __";
-    private String[] heads = {"(/(* *)" + backslash + ")", "(/(. .)" + backslash + ")", "(/(^ ^)" + backslash + ")"};
-    private String body = "  /    " + backslash;
-    private String legs = " (|---|)__";
+    private final char backslash = (char) 92;
+    private final String ears = "    __";
+    private final String[] heads = {"(/(* *)" + backslash + ")", "(/(. .)" + backslash + ")", "(/(^ ^)" + backslash + ")"};
+    private final String body = "  /    " + backslash;
+    private final String legs = " (|---|)__";
 
     public Dog(String name){
         super(name);

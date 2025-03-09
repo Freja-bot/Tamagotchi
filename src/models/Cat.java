@@ -4,12 +4,12 @@ package models;
 import java.util.Random;
 
 public class Cat extends Tamagotchi{
-    private char backslash = (char) 92;
-    private String ears = "  '  '";
-    private String[] heads = {"{. .  }", "{ * * }", "{  . .}", "{ ^ ^ }", "{  " + (char) 34 + " }"};
-    private String body = "/    " + backslash;
-    private String[] tails = {" /^", " /'", " )", " 7"};
-    private String legs = backslash + "_||_/";
+    private final char backslash = (char) 92;
+    private final String ears = "  '  '";
+    private final String[] heads = {"{. .  }", "{ * * }", "{  . .}", "{ ^ ^ }", "{  " + (char) 34 + " }"};
+    private final String body = "/    " + backslash;
+    private final String[] tails = {" /^", " /'", " )", " 7"};
+    private final String legs = backslash + "_||_/";
 
     public Cat(String name){
         super(name);
