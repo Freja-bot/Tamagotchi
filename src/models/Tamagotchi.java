@@ -1,4 +1,5 @@
 package models;
+import java.util.Random;
 
 public class Tamagotchi {
     private String name;
@@ -6,15 +7,16 @@ public class Tamagotchi {
     private int mood;
     private int energy;
     private int hunger;
+    private int stress;
     private final int maxStat = 30;
     private final int minStat = 0;
 
     public Tamagotchi(String name){
         this.name = name;
         this.age = 0;
-        this.mood = 30;
-        this.energy = 30;
-        this.hunger = 30;
+        this.mood = maxStat;
+        this.energy = maxStat;
+        this.hunger = maxStat;
     }
 
     public String getName(){
@@ -50,6 +52,7 @@ public class Tamagotchi {
     // play
     public void play(int satisfaction){
         this.mood = increaseStat(this.mood, satisfaction);
+        this.energy = decreaseStat(this.energy, 2);
     }
     //energy
     public void sleep(int energy){
@@ -73,19 +76,32 @@ public class Tamagotchi {
     }
 
     public void advanceHour(){
-        if(this.hunger != 0){
             this.hunger = decreaseStat(this.hunger, 1);
-        }
-        if(this.mood != 0){
             this.mood = decreaseStat(this.mood, 1);
-        }
-        if(this.energy != 0){
             this.energy = decreaseStat(this.energy, 1);
-        }
     }
 
     public String toString(){
         return "name=" + this.name + ", age=" + this.age + ", mood=" + this.mood + ", energy=" + this.energy + ", hunger=" + this.hunger;
     }
 
+    public void printSleep(){
+
+    }
+
+    public String printFigure() {
+        return "( . .  )";
+    }
+
+    protected String getItem(int num, String[] stringArray){
+        return stringArray[num % stringArray.length];
+    }
+
+    public String makeSound(){
+        return "...";
+    }
+
+    public void incrementAge(){
+        this.age++;
+    }
 }
