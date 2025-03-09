@@ -4,18 +4,28 @@ import java.io.IOException;
 
 public class Game {
     public static void main(String[] args) {
+
+        int hour = 0;
+
         Tamagotchi test = new Tamagotchi("Woof");
         System.out.println(test);
-        test.feed(60);
-        for(int i = 0; i < 50; i++){
-            test.updateTamagotchhi();
+        test.feed(6);
+        for(int i = 0; i < 16; i++){
+            test.advanceHour();
+        }
+        test.feed(8);
+        test.feed(8);
+        test.feed(8);
+        test.play(12);
+        for(int i = 0; i < 4; i++){
+            test.sleep(2);
+            test.advanceHour();
         }
         System.out.println(test);
-        test.play(70);
-        System.out.println(test);
+
     }
 
-    //Save data
+    /*Save data
     public static void loadFile(){
         try{
             File saveFile = new File("src/saveFile.txt");
@@ -29,5 +39,5 @@ public class Game {
         }catch(IOException e){
             System.out.println("An error occurred! SaveFile.txt could not be found or created!");
         }
-    }
+    }*/
 }
