@@ -6,14 +6,15 @@ public class Tamagotchi {
     private int mood;
     private int energy;
     private int hunger;
-    private final int maxStat = 100;
+    private final int maxStat = 30;
+    private final int minStat = 0;
 
     public Tamagotchi(String name){
         this.name = name;
         this.age = 0;
-        this.mood = 100;
-        this.energy = 100;
-        this.hunger = 10;
+        this.mood = 30;
+        this.energy = 30;
+        this.hunger = 30;
     }
 
     public String getName(){
@@ -40,44 +41,46 @@ public class Tamagotchi {
         this.name = name;
     }
 
+    //feed() increases the hunger by saturation level and ensures it does not exceed 10
     public void feed(int saturation){
-        if(this.hunger + saturation > maxStat){
-            this.hunger = maxStat;
-        }else {
-            this.hunger += saturation;
-        }
-        increaseMood(10);
+        this.hunger = increaseStat(this.hunger, saturation);
+        this.mood = increaseStat(this.mood, 1);
     }
 
+    // play
     public void play(int satisfaction){
-        increaseMood(30);
+        this.mood = increaseStat(this.mood, satisfaction);
+    }
+    //energy
+    public void sleep(int energy){
+        this.energy = increaseStat(this.energy, energy);
     }
 
-    private void decreaseEnergy(int amount){
-        if(this.energy - amount < 0){
-            this.energy = maxStat;
+    private int increaseStat(int currentStat, int amount){
+        if(currentStat + amount > maxStat){
+            return this.maxStat;
         }else {
-            this.energy -= amount;
+            return currentStat + amount;
         }
     }
 
-    private void increaseMood(int amount){
-        if(this.mood + amount > maxStat){
-            this.mood = maxStat;
+    private int decreaseStat(int currentStat, int amount){
+        if(currentStat - amount < this.minStat){
+            return this.minStat;
         }else {
-            this.mood += amount;
+            return currentStat - amount;
         }
     }
 
-    public void updateTamagotchhi(){
+    public void advanceHour(){
         if(this.hunger != 0){
-            this.hunger -= 1;
+            this.hunger = decreaseStat(this.hunger, 1);
         }
         if(this.mood != 0){
-            this.mood -= 1;
+            this.mood = decreaseStat(this.mood, 1);
         }
         if(this.energy != 0){
-            this.energy -= 1;
+            this.energy = decreaseStat(this.energy, 1);
         }
     }
 
