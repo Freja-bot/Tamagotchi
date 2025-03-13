@@ -29,4 +29,9 @@ public class Cat extends Tamagotchi{
         return "Meow";
     }
 
+    public void play(int satisfaction){
+        this.mood = increaseStat(this.mood, satisfaction);
+        this.energy = decreaseStat(this.energy, 4);
+    }
+
 }
